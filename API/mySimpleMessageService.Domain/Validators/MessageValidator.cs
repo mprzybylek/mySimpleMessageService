@@ -6,12 +6,15 @@ namespace mySimpleMessageService.Domain.Message.Validators
 {
     public class MessageValidator : IValidator<SendMessageCommand>, IValidator<DeleteMessageCommand>
     {
-        private readonly ContactsRepository _repository;
+        private readonly ContactsRepository _contactRepository;
+        private readonly MessagesRepository _messageRepository;
+
         public string ValidatorName => "SenderReceiverMessageValidator";
 
-        public MessageValidator(ContactsRepository repository)
+        public MessageValidator(ContactsRepository contactRepository, MessagesRepository messagesRepository)
         {
-            _repository = repository;
+            _contactRepository = contactRepository;
+            _messageRepository = messagesRepository;
         }
         public async Task<bool> IsValid(SendMessageCommand obj)
         {
@@ -25,12 +28,12 @@ namespace mySimpleMessageService.Domain.Message.Validators
 
         private async Task<bool> IsUserExist(int id)
         {
-            return await _repository.GetById(id) != null;
+            return await _contactRepository.GetById(id) != null;
         }
 
-        public Task<bool> IsValid(DeleteMessageCommand obj)
+        public async Task<bool> IsValid(DeleteMessageCommand obj)
         {
-            return IsUserExist(obj.Id);
+            return await _messageRepository.GetById(obj.Id) != null;
         }
     }
 }

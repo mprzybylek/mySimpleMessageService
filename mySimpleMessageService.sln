@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mySimpleMessageService.API"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mySimpleMessageService.Common", "Common\mySimpleMessageService.Common\mySimpleMessageService.Common.csproj", "{A4573090-1E39-4554-9D63-534B4F0A8660}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mySimpleMessageService.Persistance", "API\Persistance\mySimpleMessageService.Persistance.csproj", "{6866312C-77AA-4C00-B901-4A2D16B2D868}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mySimpleMessageService.Domain", "API\mySimpleMessageService.Domain\mySimpleMessageService.Domain.csproj", "{5E052F26-69CB-443D-9B15-3897C16C9FD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mySimpleMessageService.Tests", "Common\mySimpleMessageService.Tests\mySimpleMessageService.Tests.csproj", "{166A6460-98E9-4A98-ADDC-F3A7EBD7597C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mySimpleMessageService.Tests", "Common\mySimpleMessageService.Tests\mySimpleMessageService.Tests.csproj", "{166A6460-98E9-4A98-ADDC-F3A7EBD7597C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mySimpleMessageService.Persistance", "API\mySimpleMessageService.Persistance\mySimpleMessageService.Persistance.csproj", "{382FF692-8ACE-4B50-8F65-6AB3445BC323}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{A4573090-1E39-4554-9D63-534B4F0A8660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4573090-1E39-4554-9D63-534B4F0A8660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4573090-1E39-4554-9D63-534B4F0A8660}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6866312C-77AA-4C00-B901-4A2D16B2D868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6866312C-77AA-4C00-B901-4A2D16B2D868}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6866312C-77AA-4C00-B901-4A2D16B2D868}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6866312C-77AA-4C00-B901-4A2D16B2D868}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E052F26-69CB-443D-9B15-3897C16C9FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E052F26-69CB-443D-9B15-3897C16C9FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E052F26-69CB-443D-9B15-3897C16C9FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{166A6460-98E9-4A98-ADDC-F3A7EBD7597C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{166A6460-98E9-4A98-ADDC-F3A7EBD7597C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{166A6460-98E9-4A98-ADDC-F3A7EBD7597C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382FF692-8ACE-4B50-8F65-6AB3445BC323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382FF692-8ACE-4B50-8F65-6AB3445BC323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382FF692-8ACE-4B50-8F65-6AB3445BC323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382FF692-8ACE-4B50-8F65-6AB3445BC323}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,9 +52,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F59145F1-D40B-4D0A-AD45-C2909D20AF7D} = {4F02473B-F2BC-4DC6-B59D-891D1D931B8A}
 		{A4573090-1E39-4554-9D63-534B4F0A8660} = {6A852D8B-B500-410B-8D7B-A2F8EA2E125A}
-		{6866312C-77AA-4C00-B901-4A2D16B2D868} = {4F02473B-F2BC-4DC6-B59D-891D1D931B8A}
 		{5E052F26-69CB-443D-9B15-3897C16C9FD1} = {4F02473B-F2BC-4DC6-B59D-891D1D931B8A}
 		{166A6460-98E9-4A98-ADDC-F3A7EBD7597C} = {6A852D8B-B500-410B-8D7B-A2F8EA2E125A}
+		{382FF692-8ACE-4B50-8F65-6AB3445BC323} = {4F02473B-F2BC-4DC6-B59D-891D1D931B8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B764FA0A-9411-4797-B293-F4F1A710C775}

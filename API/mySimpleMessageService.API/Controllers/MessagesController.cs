@@ -36,7 +36,7 @@ namespace mySimpleMessageService.API.Controllers
             return Ok(await _mediator.Send(new ReadMessagesQuery()));
         }
         /// <summary>
-        /// Create new contact in db
+        /// Create new message in db
         /// </summary>
         /// <param name="command">
         /// Message - all params are required
@@ -53,7 +53,7 @@ namespace mySimpleMessageService.API.Controllers
         /// <summary>
         /// Delete message
         /// </summary>
-        /// <param name="id">Contact id</param>
+        /// <param name="id">Message id</param>
         /// <returns>
         /// OK
         /// </returns>

@@ -76,7 +76,7 @@ namespace mySimpleMessageService.Tests
         [Test]
         public async Task ReadMessagesQueryHandler_ReturnsCorrectCollection()
         {
-            var queryHandler = new ReadMessagesQueryHandler(_messageRepository.Object);
+            var queryHandler = new Domain.Message.Queries.ReadMessagesQueryHandler(_messageRepository.Object);
             
             var dbCollection = _messageRepository.Object.GetAll();
             var output  = await queryHandler.Handle(new ReadMessagesQuery(), new System.Threading.CancellationToken());
@@ -104,7 +104,7 @@ namespace mySimpleMessageService.Tests
                 Message = "Test",
                 SenderId = 1
             };
-            var validators = new List<IValidator<SendMessageCommand>> { new MessageValidator(_contactRepository.Object)};
+            var validators = new List<IValidator<SendMessageCommand>> { new MessageValidator(_contactRepository.Object,_messageRepository.Object)};
             var messageCommandHandler = new SendMessageCommandHandler(_messageRepository.Object, _mapper, validators);
 
             await messageCommandHandler.Handle(messageWithoutReceiver, new System.Threading.CancellationToken());
@@ -121,7 +121,7 @@ namespace mySimpleMessageService.Tests
                 SenderId = 1,
                 ReceiverId = 1
             };
-            var validators = new List<IValidator<SendMessageCommand>> { new MessageValidator(_contactRepository.Object) };
+            var validators = new List<IValidator<SendMessageCommand>> { new MessageValidator(_contactRepository.Object,_messageRepository.Object) };
             var messageCommandHandler = new SendMessageCommandHandler(_messageRepository.Object, _mapper, validators);
             
             await messageCommandHandler.Handle(messageWithoutReceiver, new System.Threading.CancellationToken());
@@ -138,7 +138,7 @@ namespace mySimpleMessageService.Tests
                 SenderId = 1,
                 ReceiverId = 2
             };
-            var validators = new List<IValidator<SendMessageCommand>> { new MessageValidator(_contactRepository.Object) };
+            var validators = new List<IValidator<SendMessageCommand>> { new MessageValidator(_contactRepository.Object,_messageRepository.Object) };
             var messageCommandHandler = new SendMessageCommandHandler(_messageRepository.Object, _mapper, validators);
             
             await messageCommandHandler.Handle(messageWithoutReceiver, new System.Threading.CancellationToken());
@@ -165,7 +165,7 @@ namespace mySimpleMessageService.Tests
             {
                 Id = 1
             };
-            var validators = new List<IValidator<DeleteMessageCommand>> { new MessageValidator(_contactRepository.Object) };
+            var validators = new List<IValidator<DeleteMessageCommand>> { new MessageValidator(_contactRepository.Object,_messageRepository.Object) };
             var messageCommandHandler = new DeleteMessageCommandHandler(_messageRepository.Object, validators);
 
             await messageCommandHandler.Handle(messageToDelete, new System.Threading.CancellationToken());
@@ -181,7 +181,7 @@ namespace mySimpleMessageService.Tests
             {
                 Id = 100
             };
-            var validators = new List<IValidator<DeleteMessageCommand>> { new MessageValidator(_contactRepository.Object) };
+            var validators = new List<IValidator<DeleteMessageCommand>> { new MessageValidator(_contactRepository.Object,_messageRepository.Object) };
             var messageCommandHandler = new DeleteMessageCommandHandler(_messageRepository.Object, validators);
 
             await messageCommandHandler.Handle(messageToDelete, new System.Threading.CancellationToken());

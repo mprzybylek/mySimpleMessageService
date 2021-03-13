@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\API\mySimpleMessageService.API\mySimpleMessageService.API.csproj" />
     <ProjectReference Include="..\..\API\mySimpleMessageService.Domain\mySimpleMessageService.Domain.csproj" />
+    <ProjectReference Include="..\..\API\mySimpleMessageService.Persistance\mySimpleMessageService.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

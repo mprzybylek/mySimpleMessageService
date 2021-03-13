@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\mySimpleMessageService.Common\mySimpleMessageService.Common.csproj" />
-    <ProjectReference Include="..\Persistance\mySimpleMessageService.Persistance.csproj" />
+    <ProjectReference Include="..\mySimpleMessageService.Persistance\mySimpleMessageService.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

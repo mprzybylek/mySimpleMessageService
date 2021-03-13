@@ -62,7 +62,7 @@
         </member>
         <member name="M:mySimpleMessageService.API.Controllers.MessagesController.Post(mySimpleMessageService.Domain.Message.Commands.SendMessageCommand)">
             <summary>
-            Create new contact in db
+            Create new message in db
             </summary>
             <param name="command">
             Message - all params are required
@@ -75,7 +75,7 @@
             <summary>
             Delete message
             </summary>
-            <param name="id">Contact id</param>
+            <param name="id">Message id</param>
             <returns>
             OK
             </returns>
