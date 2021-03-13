@@ -9,6 +9,10 @@
     <OutputPath>bin\Debug\net5.0\</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\Mateusz.Przybylek\source\repos\mySimpleMessageService\API\mySimpleMessageService.API\mySimpleMessageService.API.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="MediatR" Version="9.0.0" />

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using mySimpleMessageService.Common;
 using mySimpleMessageService.Persistance;
 using Persistance;
 using System;
@@ -28,8 +29,7 @@ namespace mySimpleMessageService.API
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, " An error occured during migration.");
+                    //Log error
                 }
             }
 

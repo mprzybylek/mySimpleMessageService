@@ -84,13 +84,16 @@ namespace mySimpleMessageService.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(
-                options =>
-                {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Documentation V1");
-                });
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(
+            options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Documentation V1");
+                options.RoutePrefix = "";
+
+            });
 
             app.UseHttpsRedirection();
 
