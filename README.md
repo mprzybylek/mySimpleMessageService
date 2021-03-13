@@ -1,0 +1,2 @@
+# mySimpleMessageService
+Simple message service
