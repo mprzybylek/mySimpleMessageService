@@ -16,8 +16,8 @@ System architecture:
 
 Layers :
 
-API
-Domain ( logic of application
+API,
+Domain ( engine of application )
 Persistance ( db layer )
 
 
