@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using mySimpleMessageService.Persistance.Entities;
 using Persistance.Entities;
-using System.Linq;
 
 namespace Persistance
 {
@@ -8,6 +8,8 @@ namespace Persistance
     {
         public DbSet<ContactEntity> Contacts { get; set; }
         public DbSet<MessageEntity> Messages { get; set; }
+        public DbSet<EventsEntity> Events { get; set; }
+        
 
         public MessageServiceContext(DbContextOptions options) : base(options)
         {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using mySimpleMessageService.Domain.Eventbus;
 using mySimpleMessageService.Persistance.Repositories;
 using Persistance.Entities;
 using System.Collections.Generic;
@@ -11,16 +12,19 @@ namespace mySimpleMessageService.Domain.Message.Commands
     public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, Unit>
     {
         private readonly MessagesRepository _repository;
-        public IMapper _mapper { get; }
-        private IEnumerable<IValidator<SendMessageCommand>> _validators;
+        private readonly IMapper _mapper;
+        private readonly IEnumerable<IValidator<SendMessageCommand>> _validators;
+        private readonly IMediator _mediator;
 
         public SendMessageCommandHandler(MessagesRepository repository,
             IMapper mapper,
-            IEnumerable<IValidator<SendMessageCommand>> validators)
+            IEnumerable<IValidator<SendMessageCommand>> validators,
+            IMediator mediator)
         {
             _repository = repository;
             _mapper = mapper;
             _validators = validators;
+            _mediator = mediator;
         }
 
         public async Task<Unit> Handle(SendMessageCommand request, CancellationToken cancellationToken)
@@ -29,11 +33,23 @@ namespace mySimpleMessageService.Domain.Message.Commands
             {
                 if(!await validator.IsValid(request))
                 {
+                    await _mediator.Publish(new ServiceEvent
+                    {
+                        Message = "SendMessageCommand failed: " + validator.ValidatorName,
+                        Status = true
+                    });
                     return Unit.Value;
                 }
             }
 
-            await _repository.Create(_mapper.Map<MessageEntity>(request));
+            await _repository.Create(_mapper.Map<MessageEntity>(request)).ContinueWith(x =>
+            {
+                _mediator.Publish(new ServiceEvent
+                {
+                    Message = "Message sent",
+                    Status = true
+                });
+            });
             return Unit.Value;
         }
     }

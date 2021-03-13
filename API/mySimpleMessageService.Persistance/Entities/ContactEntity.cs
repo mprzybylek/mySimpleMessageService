@@ -10,5 +10,6 @@ namespace Persistance.Entities
 
         public virtual ICollection<MessageEntity> MessagesSent { get; set; }
         public virtual ICollection<MessageEntity> MessagesReceived { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

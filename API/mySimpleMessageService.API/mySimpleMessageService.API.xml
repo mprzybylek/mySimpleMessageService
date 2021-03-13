@@ -47,6 +47,14 @@
             OK
             </returns>
         </member>
+        <member name="M:mySimpleMessageService.API.Controllers.EventBus.Get">
+            <summary>
+            Get system events
+            </summary>
+            <returns>
+            List of events
+            </returns>
+        </member>
         <member name="T:mySimpleMessageService.API.Controllers.MessagesController">
             <summary>
             Messages operations

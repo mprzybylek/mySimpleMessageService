@@ -42,8 +42,9 @@ namespace mySimpleMessageService.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(AutoMapperProfiles));
-            services.AddTransient<MessagesRepository>();
-            services.AddTransient<ContactsRepository>();
+            services.AddScoped<MessagesRepository>();
+            services.AddScoped<ContactsRepository>();
+            services.AddScoped<EventsRepository>();
             services.AddTransient<IValidator<SendMessageCommand> ,MessageValidator>();
             services.AddTransient<IValidator<DeleteMessageCommand> ,MessageValidator>();
             services.AddTransient<IValidator<UpdateContactCommand> ,ContactValidator>();
@@ -125,6 +126,7 @@ namespace mySimpleMessageService.API
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<MessageReadModel>("Messages");
             builder.EntitySet<ContactReadModel>("Contacts");
+            builder.EntitySet<EventReadModel>("EventBus");
             return builder.GetEdmModel();
         }
     }

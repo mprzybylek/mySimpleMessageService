@@ -22,7 +22,7 @@ namespace mySimpleMessageService.API
                 try
                 {
                     var context = services.GetRequiredService<MessageServiceContext>();
-                    context.Database.EnsureDeleted();
+                    //context.Database.EnsureDeleted();
                     context.Database.Migrate();
                     Seed.SeedData(context);
                 }

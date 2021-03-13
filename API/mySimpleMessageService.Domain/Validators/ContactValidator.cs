@@ -28,7 +28,8 @@ namespace mySimpleMessageService.Domain.Validators
 
         private async Task<bool> IsUserExist(int id)
         {
-            return await _repository.GetById(id) != null;
+            var user = await _repository.GetById(id);
+            return !(user == null || user.IsDeleted);
         }
 
     }

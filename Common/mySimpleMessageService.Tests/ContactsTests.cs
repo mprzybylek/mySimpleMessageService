@@ -107,7 +107,7 @@ namespace mySimpleMessageService.Tests
                 Name = "test",
                 Surname = "test"
             };
-            var contactHandler = new CreateContactCommandHandler(_contactRepository.Object,_mapper);
+            var contactHandler = new CreateContactCommandHandler(_contactRepository.Object,_mapper, _mediator.Object);
             
             await contactHandler.Handle(command, new System.Threading.CancellationToken());
             
@@ -122,11 +122,11 @@ namespace mySimpleMessageService.Tests
                  Id = 1
             };
             var validators = new List<IValidator<DeleteContactCommand>> { new ContactValidator(_contactRepository.Object) };
-            var contactHandler = new DeleteContactCommandHandler(_contactRepository.Object, validators);
+            var contactHandler = new DeleteContactCommandHandler(_contactRepository.Object, validators, _mediator.Object);
 
             await contactHandler.Handle(command, new System.Threading.CancellationToken());
 
-            _contactRepository.Verify(x => x.Delete(It.IsAny<int>()), Times.Once);
+            _contactRepository.Verify(x => x.Update(It.IsAny<int>(),It.IsAny<ContactEntity>()), Times.Once);
         }
         [Test]
         public async Task DeleteContactHandler_DeleteNonExistContact()
@@ -136,11 +136,11 @@ namespace mySimpleMessageService.Tests
                 Id = 100
             };
             var validators = new List<IValidator<DeleteContactCommand>> { new ContactValidator(_contactRepository.Object) };
-            var contactHandler = new DeleteContactCommandHandler(_contactRepository.Object, validators);
+            var contactHandler = new DeleteContactCommandHandler(_contactRepository.Object, validators, _mediator.Object);
 
             await contactHandler.Handle(command, new System.Threading.CancellationToken());
 
-            _contactRepository.Verify(x => x.Delete(It.IsAny<int>()), Times.Never);
+            _contactRepository.Verify(x => x.Update(It.IsAny<int>(),It.IsAny<ContactEntity>()), Times.Never);
         }
         [Test]
         public async Task UpdateContactHandler_UpdateExistContact()
@@ -150,7 +150,7 @@ namespace mySimpleMessageService.Tests
                 Id = 1
             };
             var validators = new List<IValidator<UpdateContactCommand>> { new ContactValidator(_contactRepository.Object) };
-            var contactHandler = new UpdateContactCommandHandler(_contactRepository.Object,_mapper, validators);
+            var contactHandler = new UpdateContactCommandHandler(_contactRepository.Object,_mapper, validators,_mediator.Object);
 
             await contactHandler.Handle(command, new System.Threading.CancellationToken());
 
@@ -164,7 +164,7 @@ namespace mySimpleMessageService.Tests
                 Id = 100
             };
             var validators = new List<IValidator<UpdateContactCommand>> { new ContactValidator(_contactRepository.Object) };
-            var contactHandler = new UpdateContactCommandHandler(_contactRepository.Object, _mapper, validators);
+            var contactHandler = new UpdateContactCommandHandler(_contactRepository.Object, _mapper, validators, _mediator.Object);
 
             await contactHandler.Handle(command, new System.Threading.CancellationToken());
 
